@@ -1,0 +1,628 @@
+/*********************************
+*
+*  ローディング画面
+*
+*********************************/
+.loader{
+  align-items: center;
+  background: #fff;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+}
+.loader::after{
+  content: "";
+  animation: loader 0.5s linear infinite;
+  border: 1px solid #30a5ff;
+  border-radius: 50%;
+  border-right: 1px solid #30a5ff;
+  border-top: 1px solid #ffffff;
+  height: 70px;
+  width: 70px;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/****/
+td{
+  vertical-align: middle!important;
+}
+
+.train_add{
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: -1px 7px 10px 1px #cec6c6;
+  margin-bottom: 20px;
+  border-radius: 10px;}
+
+.blocknone{
+  display: none;
+}
+
+.block{
+  display: inline;
+}
+
+/**ログイン*/
+.login_select .login_title{
+  display: block;
+  margin: 0 auto;
+}
+.login_button{
+  display: block;
+  margin: 0 auto;
+}
+.login_top{
+  text-align: center;
+    font-size: 19px;
+    padding: 8px;
+    width: 90px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/**トップ**/
+.top_p{
+  margin-top: 30px;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.top_flex{
+  display: flex;
+  width: 100%;
+}
+.top_flex_center{
+display: flex;
+justify-content: center;
+}
+
+.top_flex .top_flex_l,
+.top_flex .top_flex_c,
+.top_flex .top_flex_r,
+.top_flex_center .top_flex_c{
+  width: 31%;
+  margin: 20px 1%;
+  border-top: 4px solid #30a5ff;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.top_flex .top_flex_l span:first-child,
+.top_flex .top_flex_c span:first-child,
+.top_flex .top_flex_r span:first-child,
+.top_flex_center span:first-child{
+  padding: 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.top_flex .top_flex_l span:nth-child(2),
+.top_flex .top_flex_c span:nth-child(2),
+.top_flex .top_flex_r span:nth-child(2),
+.top_flex_center span:nth-child(2){
+  padding: 10px 0;
+    display: block;
+    text-align: center;
+    background: #fff;
+    /* border-left: 2px solid #30a5ff;
+    border-bottom: 2px solid #30a5ff; */
+}
+
+.top_flex_2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.top_flex_2 .user_expense{
+  width: 31%;
+  margin: 0 1%;
+}
+.top_flex_2 .user_expense span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top_flex_2 .user_expense a:hover{
+  text-decoration: none;
+  display: block;
+  box-shadow: 1px 1px 4px 0px #a2bfd4;
+  position: relative;
+  top: 5px;
+ 
+}
+.top_flex_2 .user_expense span i{
+  font-size: 3em!important;
+  padding: 10px 0;
+  margin-right: 10px;
+}
+
+.user_search_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.user_search_box .user_search_name i{
+  position: relative;
+  right: 20px;
+  z-index: 999;
+  pointer-events: all;
+}
+.user_search_box .user_search_name i:active{
+  top: 2px;
+}
+.user_search_name,
+.user_search_service{
+margin: 0 1%;
+}
+
+.user_search_name input,
+.user_search_service input{
+  border: none;
+}
+
+.select_expensen ul{
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.select_expensen ul li{
+  list-style: none;
+  padding: 0 8px;
+  border: 1px solid #30a5ff;
+  background-color: #30a5ff;
+
+  border-radius: 11px;
+  margin-right: 5px;
+}
+.select_expensen ul li a{
+  color: #fff!important;
+}
+.flex_table{
+  margin-top: 40px;
+  display: flex;
+}
+.app_form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.calender_detail_table th,
+.calender_detail_table td{
+  color: #000!important;
+}
+.calender_detail_table td{
+  height: auto!important;
+  padding: 10px 5px;
+  text-align: center;
+}
+.calender_detail_table td img{
+  height: 150px;
+  object-fit: contain;
+}
+
+.confirm{
+  border: 1px solid #14a8ff;
+    padding: 10px;
+    border-radius: 10px;
+    background: #14a8ff;
+    box-shadow: 1px 1px 4px 0px #000;
+    color: #fff;
+}
+.confirm:active,
+.delete_button:active{
+  position: relative;
+  top: 4px;
+}
+
+.delete_button{
+  color: #ff0000;
+  border: none;
+  background: no-repeat;
+}
+
+.csvModal .show{
+  opacity: 1;
+}
+
+.csvModal .modal-dialog{
+
+  position: relative;
+  top: 115px;
+}
+.table .show,
+.calender_detail_table .show{
+  opacity: 1!important;
+}
+.table .modal-dialog,
+.calender_detail_table .modal-dialog{
+  position: relative;
+  top: 115px;
+}
+.calender_detail_table .modal-xl{
+  width: 90%!important;
+  position: relative;
+  top: 115px;
+}
+
+.calender_detail_table .modal-dialog img{
+  width: 100%!important;
+  height: 400px;
+}
+
+.table-responsive{
+  overflow-y: scroll;
+  overflow-x: scroll;
+  width: 100%;
+  height: 500px;
+  display: block;
+}
+.mt-40{
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.csv_comp_table th{
+  width: 150px;
+}
+.csv_comp_table td{
+  padding: 5px;
+}
+.csv_comp_table th:nth-child(2),
+.csv_comp_table th:nth-child(6){
+  width: 200px;
+}
+.csv_comp_table td input,
+.csv_comp_table td select{
+  width: 100%;
+  border:none;
+}
+
+.fadein-before{
+  /*透過度の設定。0で表示されなくなる。*/
+  opacity: 1;
+  /*要素を左に100pxずらしたところに配置する*/
+  transform:translateX(0px);
+  /*透過度と表示位置を1秒かけて変化させる*/
+  transition:opacity 1s,transform 1s;
+}
+
+.fadein-after{
+  /*透過度の設定。非表示から表示にする。*/
+  opacity: 1;
+  /*要素を100px左にしていたのを元の位置に戻す*/
+  transform: translate(0);
+  transition:opacity 1s;
+}
+
+.pc{
+  display: block;
+}
+.sp{
+  display: none;
+}
+
+.calender_flex{
+  display: flex;
+}
+.calender_flex p:first-child,
+.calender_flex p:nth-child(2){
+  margin-right: 5px;
+}
+.calender_flex p:nth-child(2){
+  height: 26px;
+  line-height: 26px;
+}
+.calender_flex p i{
+  font-size: 2em;
+}
+.full-height {
+  margin-top: 30px;
+}
+.other_select{
+  margin-bottom: 10px;
+}
+
+.my_div{
+  border-top: 4px solid #30a5ff;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #fff;
+}
+.my_div span:first-child{
+  display: block;
+  padding: 10px ;
+  background: #e9ecf2;
+}
+.my_div span:last-child{
+  display: block;
+  padding: 10px ;
+}
+
+.myprof_form{
+  margin-bottom: 10px;
+}
+.pro_image {
+  width: 200px;
+  position: relative;
+   margin: 0 auto 20px;
+}
+#preview{
+  width: 100%;
+  height: 200px;
+   display: block; 
+   border-radius: 50%;
+}
+.form-group #preview {
+  margin-top: 10px;
+  width: 100%!important;
+  object-fit: contain;
+  display: block;
+  border-radius: 0%!important;
+}
+#camera_li:hover{
+  opacity: 1;
+}
+#camera_li{
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  display: inline-block;
+  background: #0000001f;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.camera_li_label{
+  display: block;
+  margin: 0 auto;
+  top: 40%;
+  position: relative;
+}
+#camera_li i{
+  font-size: 300%;
+  display: inline-block;
+  margin: 0 auto;
+  top: 40%;
+  position: relative;
+  left: 40%;
+}
+
+
+@media screen and (max-width:640px){
+  .pc{
+    display: none;
+  }
+  .sp{
+    display: block;
+  }
+
+  .show{
+    opacity: 1;
+
+  }
+  .table .modal-dialog,
+  #searchModal .modal-dialog{
+    position: relative;
+    top: 200px;
+  }
+  /**トップ**/
+.top_flex{
+  display: -webkit-inline-box;
+  width: 100%;
+}
+.top_flex_center{
+display: flex;
+justify-content: center;
+}
+
+.top_flex .top_flex_l,
+.top_flex .top_flex_c,
+.top_flex .top_flex_r,
+.top_flex_center .top_flex_c{
+  width: 48%;
+  margin: 20px 1%;
+  border-top: 4px solid #30a5ff;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.top_flex .top_flex_l span:first-child,
+.top_flex .top_flex_c span:first-child,
+.top_flex .top_flex_r span:first-child,
+.top_flex_center span:first-child{
+  padding: 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.top_flex .top_flex_l span:nth-child(2),
+.top_flex .top_flex_c span:nth-child(2),
+.top_flex .top_flex_r span:nth-child(2),
+.top_flex_center span:nth-child(2){
+  padding: 10px 0;
+    display: block;
+    text-align: center;
+    background: #fff;
+    /* border-left: 2px solid #30a5ff;
+    border-bottom: 2px solid #30a5ff; */
+}
+
+.top_flex_2{
+  display: block;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.top_flex_2 .user_expense{
+  width: 100%;
+  margin: 20px 0;
+}
+.top_flex_2 .user_expense span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top_flex_2 .user_expense a{
+  text-decoration: none;
+  display: block;
+  box-shadow: 1px 1px 4px 0px #a2bfd4;
+  position: relative;
+  top: 5px;
+ 
+}
+.top_flex_2 .user_expense span i{
+  font-size: 3em!important;
+  padding: 10px 0;
+  margin-right: 10px;
+}
+  .calender_detail_table .modal-xl{
+    width: 90%!important;
+    margin: 0 auto;
+    position: relative;
+    top: 250px!important;
+  }
+  .flex_table,
+  .calender_detail_table{
+    display: block;
+    width: 100%;
+  }
+
+  .user_search_box{
+    display: block;
+    width: 100%;
+  }
+  .user_search_name,
+  .user_search_service{
+  margin: 0 1%;
+  }
+  .user_search_name label,
+  .user_search_service label{
+    display: block;
+    text-align: center;
+    font-size: 18px;
+
+  }
+  .user_search_name input,
+  .user_search_service select{
+    width: 100%;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    display: block;
+    height: 45px;
+    line-height: 45px;
+  }
+
+  .user_search_box .user_search_name i{
+    position: relative;
+    left: 292px;
+    top: -31px;
+    font-size: 18px;
+  }
+  .calender_detail_table thead,
+  .calender_relation_table thead,
+  .csv_comp_table thead{
+    display: none;
+  }
+  .calender_detail_table tbody,
+  .calender_relation_table tbody,
+  .csv_comp_table tbody{
+    width: 100%;
+    display: block;
+  }
+  .calender_detail_table tr{
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .calender_detail_table tr,
+  .calender_detail_table td{
+    display: inline-block;
+    width: 100%;
+  }
+  .csv_comp_table{
+    overflow-y: scroll;
+    height: 500px;
+    display: block;
+  }
+  .csv_comp_table tr{
+    display: grid;
+    width: 100%; 
+  }
+  .app_button{
+    margin-top: 30px;
+  }
+  .calender_relation_table td input,
+  .calender_relation_table td select{
+    width: 150px;
+    padding: 5px;
+  }
+  .calender_detail_table td:first-child,
+  .calender_detail_other_table td:first-child,
+  .calender_relation_table td:first-child,
+  .table_td_first{
+    background: #14a8ff;
+    color: #fff!important;
+  }
+  .calender_detail_table td::before,
+  .calender_detail_other_table td::before,
+  .calender_relation_table td::before,
+  .csv_comp_table td::before{
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    width: 100px;
+    text-align: center;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+  }
+  .calender_detail_table td img{
+    height: auto;
+  }
+  .csvModal .modal-dialog{
+
+    position: relative;
+    top: 225px;
+  }
+  input[type="checkbox"]{
+    width:			12px;
+    height:			12px;
+    -moz-transform:		scale(1.4);
+    -webkit-transform:	scale(1.4);
+    transform:		scale(1.4);
+  }
+  .profile-userpic img {
+    float: left;
+    margin: 10px 0px 0px 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px !important;
+  }
+}
