@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Line extends Model
+class students extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'id', 'line', 'created_at', 'updated_at'
-    ];
 }

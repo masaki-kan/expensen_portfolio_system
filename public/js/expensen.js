@@ -17,6 +17,7 @@ window.addEventListener('load', () => {
 
 });
 
+
 /****form imageプレビュー */
 document.getElementById('image').addEventListener('change', function (e) {
   // 1枚だけ表示する
@@ -30,20 +31,7 @@ document.getElementById('image').addEventListener('change', function (e) {
   img.src = blobUrl;
 });
 
-/****form imageプレビュー */
-console.log('ok');
-document.getElementById('image').addEventListener('change', function (e) {
 
-  // 1枚だけ表示する
-  var file = e.target.files[0];
-
-  // ファイルのブラウザ上でのURLを取得する
-  var blobUrl = window.URL.createObjectURL(file);
-
-  // img要素に表示
-  var img = document.getElementById('preview');
-  img.src = blobUrl;
-});
 
 
 

@@ -35,7 +35,6 @@ class AdminController extends Controller
 
     public function index(ArrayService $arrayservices)
     {
-
         //現在の初月
         $startMonth = Carbon::now()->startOfMonth()->toDateString();
         //現在の月末
@@ -50,6 +49,7 @@ class AdminController extends Controller
         $master = $arrayservices->master();
         $ys = $arrayservices->y();
         $ms = $arrayservices->m();
+        $company = Company::all();
 
         $users = User::where('flag', 1)->orderBy('id', 'asc')->paginate(50);
         $trains_money = Train::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->whereNotIn('subject', [1])->where('status', 2)->sum('money');
@@ -59,7 +59,7 @@ class AdminController extends Controller
         $trains5_money = Train::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->whereIn('subject', [5])->where('status', 2)->sum('money');
         $trains6_money = Train::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->whereIn('subject', [6])->where('status', 2)->sum('money');
         $relations_money = Relationtrain::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->where('status', 1)->sum('money');
-        return view('admin.top', compact('trains_money', 'trains2_money', 'trains3_money', 'trains4_money', 'trains5_money', 'trains6_money', 'relations_money', 'sex', 'service', 'master', 'users', 'ym', 'ys', 'ms', 'explode_y', 'explode_m'));
+        return view('admin.top', compact('trains_money', 'trains2_money', 'trains3_money', 'trains4_money', 'trains5_money', 'trains6_money', 'relations_money', 'sex', 'service', 'master', 'users', 'ym', 'ys', 'ms', 'explode_y', 'explode_m', 'company'));
     }
 
     public function user_search(Request $request, ArrayService $arrayservices)
@@ -78,6 +78,7 @@ class AdminController extends Controller
         $master = $arrayservices->master();
         $ys = $arrayservices->y();
         $ms = $arrayservices->m();
+        $company = Company::all();
 
         $trains_money = Train::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->whereNotIn('subject', [1])->where('status', 2)->sum('money');
         $trains2_money = Train::whereBetween('date', [$startMonth, $endMonth])->where('user_id', Auth::user()->id)->whereIn('subject', [2])->where('status', 2)->sum('money');
@@ -99,7 +100,7 @@ class AdminController extends Controller
         $user_name = $request->user_name;
         $user_service = $request->user_service;
 
-        return view('admin.top_search', compact('trains_money', 'relations_money', 'sex', 'service', 'master', 'users', 'trains2_money', 'trains3_money', 'trains4_money', 'trains5_money', 'trains6_money', 'user_name', 'user_service', 'ym', 'ys', 'ms', 'explode_y', 'explode_m'));
+        return view('admin.top_search', compact('trains_money', 'relations_money', 'sex', 'service', 'master', 'users', 'trains2_money', 'trains3_money', 'trains4_money', 'trains5_money', 'trains6_money', 'user_name', 'user_service', 'ym', 'ys', 'ms', 'explode_y', 'explode_m', 'company'));
     }
 
     public function expensenForm()
@@ -117,11 +118,13 @@ class AdminController extends Controller
         $sex = $arrayservices->sex();
         $master = $arrayservices->master();
         $service = $arrayservices->service();
-        return view('admin.userNew', compact('sex', 'service', 'master'));
+        $companies = Company::all();
+        return view('admin.userNew', compact('sex', 'service', 'master', 'companies'));
     }
 
     public function user_input(ValidateRequest $request)
     {
+
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -130,6 +133,14 @@ class AdminController extends Controller
         $user->service = $request->service;
         $md5 = substr(str_shuffle('123456789abcdefghijklmnopqrstuvwxyz'), 0, '12');
         $user->md5 = $md5;
+        if ($request->service == 2 || $request->service == 3) {
+            $user->company = 0;
+        }
+        if (isset($request->company)) {
+            $user->company = $request->company;
+        } else {
+            $user->company = null;
+        }
         $pass = substr(str_shuffle('123456789abcdefghijklmnopqrstuvwxyz'), 0, '8');
         $user->password = password_hash($pass, PASSWORD_DEFAULT);
         $user->master_flag = $request->master_flag;
@@ -155,6 +166,11 @@ class AdminController extends Controller
         $user->tel = $request->tel;
         $user->sex = $request->sex;
         $user->service = $request->service;
+        if (isset($request->company)) {
+            $user->company = $request->company;
+        } else {
+            $user->company = 0;
+        }
         $user->save();
         return redirect()->back()->with('message', '修正が完了しました。');
     }
@@ -173,9 +189,10 @@ class AdminController extends Controller
     public function userdetail($id, ArrayService $arrayservices)
     {
         $users = User::find($id);
+        $company = Company::all();
         $sex = $arrayservices->sex();
         $service = $arrayservices->service();
-        return view('admin.userdetail', compact('users', 'sex', 'service'));
+        return view('admin.userdetail', compact('users', 'sex', 'service', 'company'));
     }
 
     public function company_new()
@@ -410,7 +427,6 @@ class AdminController extends Controller
 
     public function profimage(Request $request)
     {
-
         $login_user = User::where('id', Auth::user()->id)->first();
         if ($request->file('image')) {
             $imageData = $request->file('image');
@@ -422,5 +438,15 @@ class AdminController extends Controller
         }
         $login_user->update();
         return response()->json();
+    }
+
+    public function admin_myprofile($id, ArrayService $arrayservices)
+    {
+        $users = User::where('id', $id)->first();
+        $sex = $arrayservices->sex();
+        $service = $arrayservices->service();
+        $masters = $arrayservices->master();
+        $company = Company::all();
+        return view('admin.user_profile', compact('users', 'sex', 'service', 'masters', 'company'));
     }
 }

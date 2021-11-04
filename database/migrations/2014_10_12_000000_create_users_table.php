@@ -20,9 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('tel');
             $table->string('sex');
             $table->string('service');
-            $table->string('image')->nullable();
-            $table->string('password')->nullable();
-            $table->text('md5')->nullable();
+            $table->string('image');
+            $table->string('company');
+            $table->string('password');
+            $table->text('md5');
             $table->integer('flag')->default(0);
             $table->integer('master_flag')->nullable();
             $table->integer('login')->default(0);

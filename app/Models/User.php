@@ -25,6 +25,13 @@ class User extends Authenticatable
         'service',
         'email',
         'password',
+        'image',
+        'md5',
+        'flag',
+        'master_flag',
+        'login',
+        'created_at',
+        'updated_at',
     ];
 
     /**

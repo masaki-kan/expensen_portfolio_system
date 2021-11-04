@@ -7,7 +7,7 @@ class ArrayService
 {
   public function sex()
   {
-    return array('男性', '女性', 'その他');
+    return array(0 => '男性', 1 => '女性', 2 => 'その他');
   }
   public function service()
   {

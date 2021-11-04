@@ -175,11 +175,38 @@ $(document).ready(function () {
       dataType: 'json',
       data: formData,//Laravelに渡すデータ
       success: function (data) {
+
       },
       error: function () {
         alert('データ取得に失敗しました。')
       }
     });
+  })
+
+
+  var val = $('input[name="service"]:checked').val();
+  // console.log(val);
+  if (val == 2 || val == 3) {
+    $('#company_div').show();
+    $('.company_detail').attr('disabled', false);
+  }
+  if (val == 0 || val == 1) {
+    $('#company_div').hide();
+    $('.company_detail').attr('disabled', true);
+  }
+
+  $('.company').attr('disabled', true);
+  $('input[name="service"]:radio').change(function () {
+    let a2 = $(this).val();
+    if (a2 == 2 || a2 == 3) {
+      $('#company_div').show();
+      $('.company').attr('disabled', false);
+      $('.company_detail').attr('disabled', false);
+    } else {
+      $('#company_div').hide();
+      $('.company').attr('disabled', true);
+      $('.company_detail').attr('disabled', true);
+    }
   })
 
 

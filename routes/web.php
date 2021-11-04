@@ -7,6 +7,7 @@ use App\Http\Controllers\CsvController;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\WebPushController;
+use App\Http\Controllers\SampleController;
 
 
 /*
@@ -84,7 +85,7 @@ Route::get('/userreset/md5={md5}', [ForgotPasswordController::class, 'userreset'
 Route::post('/passset', [ForgotPasswordController::class, 'passset'])->name('passset');
 
 Route::get('/myprofile', [AdminController::class, 'myprofile'])->name('myprofile');
+Route::get('/user_profile/{id}', [AdminController::class, 'admin_myprofile'])->name('admin.userprofile');
 Route::post('/profimage', [AdminController::class, 'profimage'])->name('profImage');
 
-Route::get('web_push/create', [WebPushController::class, 'create']);
-Route::post('web_push', [WebPushController::class, 'store']);
+Route::get('/sample', [SampleController::class, 'sample']);

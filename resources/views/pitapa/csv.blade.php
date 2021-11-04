@@ -24,7 +24,7 @@
       <div class="card-body">
         <div class="form-group">
           <div class=" col-form-label">
-            <p>PiTaPaはこちら</p>
+            <p>交通費データとpitapacsvを突合します。</p>
             <p class="text-danger error-text">
               @if( $errors->has('pitapacsv') )
               {{ $errors->first('pitapacsv') }}

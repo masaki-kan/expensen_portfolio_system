@@ -86,6 +86,8 @@ class TransController extends Controller
                 $temp_path = $imagefile->store('public/trans');
                 $filename = str_replace('public/trans/', '', $temp_path);
                 $realTrain->image = $filename;
+            } else {
+                $realTrain->image = null;
             }
             $realTrain->status = 0;
             $realTrain->applicant_flag = 0;
@@ -120,7 +122,7 @@ class TransController extends Controller
                 $transfertrains->status = 0;
                 $transfertrains->save();
             }
-            return redirect()->back()->with('message', '登録完了しました。');
+            return redirect()->back()->with('massege', '登録完了しました。');
         }
     }
 
@@ -152,7 +154,7 @@ class TransController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
         } else {
-            // dd($request->all());
+
             $realTrain = new Train;
             $realTrain->user_id = Auth::user()->id;
             $realTrain->date = $request->date;
@@ -170,7 +172,7 @@ class TransController extends Controller
             $realTrain->status = 0;
             $realTrain->applicant_flag = 0;
             $realTrain->save();
-            return redirect()->back()->with('message', '登録完了しました。');
+            return redirect()->back()->with('massege', '登録完了しました。');
         }
     }
 

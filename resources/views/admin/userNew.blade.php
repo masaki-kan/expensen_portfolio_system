@@ -83,6 +83,23 @@
                 </div>
                 @endif
 
+                <div class="form-group" id="company_div" style="display: none;">
+                    <label><span class="label label-danger">必須</span> 所属</label>
+                    <div>
+                        <select class="form-control company" name="company">
+                            @foreach( $companies as $value )
+                            <option value="{{$value->id}}">{{ $value->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                @if( $errors->has('company') )
+                <div class="form-group">
+                    <span class="text-danger">{{ $errors->first('company') }}</span>
+                </div>
+                @endif
+
                 <div class="form-group">
                     <label><span class="label label-danger">必須</span> 管理権限</label>
                     <div>
@@ -112,4 +129,5 @@
 <!--/.row-->
 </div>
 <!--/.main-->
+
 @endsection

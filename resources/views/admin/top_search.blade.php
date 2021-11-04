@@ -243,6 +243,7 @@
 					<th>社員名</th>
 					<th>電話番号</th>
 					<th>メールアドレス</th>
+					<th>所属</th>
 					<th>雇用形態</th>
 					<th>性別</th>
 					<th></th>
@@ -254,11 +255,13 @@
 				<tr>
 					<td>
 						<div class="profile-userpic">
-							@if( $user->image )
-							<img src="{{ asset('storage/profile/'.$user->image) }}" class="img-responsive" alt="" style="margin:0px;">
-							@else
-							<img src="{{ asset('image/noimage.png') }}" class="img-responsive" alt="" style="margin:0px;">
-							@endif
+							<a href="{{ route('admin.userprofile',$user->id) }}">
+								@if( $user->image )
+								<img src="{{ asset('storage/profile/'.$user->image) }}" class="" alt="" style="margin:0px;">
+								@else
+								<img src="{{ asset('image/noimage.png') }}" class="" alt="" style="margin:0px;">
+								@endif
+							</a>
 						</div>
 					</td>
 					<td>
@@ -271,6 +274,18 @@
 					<td>{{ $user->name }}</td>
 					<td><a href="tel:{{ $user->tel }}" nclick="return confirm('電話をおかけしますか？')">{{ $user->tel }}</a></td>
 					<td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+					<td>
+						@if($user->company != 0)
+						@foreach( $company as $value )
+						@if($value->id == $user->company )
+						{{$value->name}}
+						@endif
+						@endforeach
+						@else
+						自社
+						@endif
+
+					</td>
 					<td>{{ $service[$user->service] }}</td>
 					<td>{{ $sex[$user->sex] }}</td>
 					<td><a href="/admin/trans/user_id={{$user->id}}&month={{$ym}}"><button type="button" class="btn btn-info">交通費</button></a></td>
@@ -285,8 +300,7 @@
 	@endif
 
 
-
-	<div class="col-sm-12">
+	<div class="col-sm-12" style="margin-top: 40px;">
 		<p class="back-link">Expensen by <a href="">masaki</a></p>
 	</div>
 </div>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-5">
             <div class="login_select">
-                <img class="login_title" src="{{ asset('/image/expensen_title.jpg')}}" style="  display: block;width:100%;
+                <img class="login_title" src="{{ asset('/image/expensen_title.jpg')}}" style="  display: block;width:200px;
   margin: 0 auto;">
 
                 <div class="card-body">

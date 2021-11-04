@@ -53,9 +53,9 @@
                 <div class="form-group">
                     <label><span class="label label-danger">必須</span> 性別</label>
                     <div>
-                        @foreach( $sex as $value )
+                        @foreach( $sex as $key => $value )
                         <label class="radio-inline">
-                            <input type="radio" name="sex" value="{{$value}}" {{ $users->sex == $value ? 'checked' : "" }}>{{$value}}
+                            <input type="radio" name="sex" value="{{$key}}" {{ $users->sex == $key ? 'checked' : "" }}>{{$value}}
                         </label>
                         @endforeach
                     </div>
@@ -70,9 +70,9 @@
                 <div class="form-group">
                     <label><span class="label label-danger">必須</span> 就業形態</label>
                     <div>
-                        @foreach( $service as $value )
+                        @foreach( $service as $key => $value )
                         <label class="radio-inline">
-                            <input type="radio" name="service" value="{{$value}}" {{ $users->service  == $value  ? 'checked' : "" }}>{{$value}}
+                            <input type="radio" name="service" value="{{$key}}" {{ $users->service  == $key  ? 'checked' : "" }}>{{$value}}
                         </label>
                         @endforeach
                     </div>
@@ -83,6 +83,24 @@
                     <span class="text-danger">{{ $errors->first('service') }}</span>
                 </div>
                 @endif
+
+                <div class="form-group" id="company_div">
+                    <label for="name"><span class="label label-danger">必須</span> 所属</label>
+                    <div>
+                        <select name="company" class="form-control company_detail">
+                            @foreach( $company as $value )
+                            <option value="{{$value->id}}" {{ $users->company  == $value->id  ? 'selected' : "" }}>{{ $value->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                @if( $errors->has('company') )
+                <div class="form-group ">
+                    <span class="text-danger">{{ $errors->first('company') }}</span>
+                </div>
+                @endif
+
 
                 <button type="submit" class="btn btn-primary">修正する</button>
             </div>

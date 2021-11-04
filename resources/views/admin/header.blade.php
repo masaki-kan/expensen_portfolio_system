@@ -5,9 +5,9 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span></button>
-			<a class="navbar-brand" href="#"><span>Laravel</span></a>
+			<a class="navbar-brand" href="#"><span>Laravel ✖️ expensen</span></a>
 			<ul class="nav navbar-top-links navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+				<!-- <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
 					</a>
 					<ul class="dropdown-menu dropdown-messages">
@@ -39,7 +39,7 @@
 								</a></div>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 				<!-- <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-bell"></em><span class="label label-info">5</span>
 					</a>

@@ -13,7 +13,10 @@
 	<!--/.row-->
 
 	<div class="">
-		<div class="col-sm-8 col-sm-offset-2 mt-5" style="margin-top:40px;">
+		@if( session('massege') )
+		<p class="text-center">{{ session('massege') }}</p>
+		@endif
+		<div class="col-sm-8 col-sm-offset-2 mt-5" style="margin-top:40px;margin-bottom:40px;">
 			<div class="select_expensen">
 				<!-- <form id="form_change">
 					@csrf
